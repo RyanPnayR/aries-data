@@ -12,5 +12,5 @@ var argv = require('minimist')(process.argv.slice(2), {
 
 // Get boot params and fire it up.
 require('./execute').default(argv).catch(function (e) {
-    console.log(e);
+    console.error(e);
 });

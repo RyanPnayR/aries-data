@@ -1,12 +1,8 @@
 import test from 'blue-tape';
-import Task from '../lib/swf/tasks/Task';
-import ActivityTask from '../lib/swf/tasks/ActivityTask';
+import Activity from '../lib/tasks/Activity';
 
-test('Task#assign', t => {
-    const task = { input: '{ "key": "123" }' };
-    const genericTask = new Task(task);
-    const clone = genericTask.assign({ input: { key: '456' } });
-    t.equal(clone.input.key, '456');
-    t.ok(clone.assign);
+test('Activities have a logger', t => {
+    const activity = new Activity();
+    t.ok(activity.log);
     t.end();
 });
