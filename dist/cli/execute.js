@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19,8 +19,6 @@ exports.default = function () {
 
                         // Parse args.
                         args = _.map(function (arg) {
-                            console.log('ARG', arg);
-
                             try {
                                 return JSON.parse(arg);
                             } catch (e) {
@@ -28,11 +26,8 @@ exports.default = function () {
                             }
                         });
 
-
-                        console.log('NODE ARGS', args);
-                        console.log(args.length);
-
                         // Require in the module.
+
                         pkg = require(repo || process.cwd());
 
                         // Grab `default` if it exists .
@@ -45,25 +40,25 @@ exports.default = function () {
 
                         // Run the onTask function.
 
-                        _context.next = 9;
+                        _context.next = 7;
                         return handler.onTask.apply(handler, args);
 
-                    case 9:
-                        _context.next = 14;
+                    case 7:
+                        _context.next = 12;
                         break;
 
-                    case 11:
-                        _context.prev = 11;
-                        _context.t0 = _context['catch'](0);
+                    case 9:
+                        _context.prev = 9;
+                        _context.t0 = _context["catch"](0);
 
                         console.log(_context.t0);
 
-                    case 14:
-                    case 'end':
+                    case 12:
+                    case "end":
                         return _context.stop();
                 }
             }
-        }, _callee, this, [[0, 11]]);
+        }, _callee, this, [[0, 9]]);
     }));
 
     function execute(_x) {
