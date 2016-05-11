@@ -29,10 +29,6 @@ var _logger = require('../../decorators/logger');
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var _ActivityTask = require('../../swf/tasks/ActivityTask');
-
-var _ActivityTask2 = _interopRequireDefault(_ActivityTask);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
@@ -104,28 +100,28 @@ var ActivityTester = (_dec = (0, _logger2.default)(), _dec(_class = (_temp = _cl
             // POST /outfile
             .post('/outfile').query({ uploadId: uploadId }).reply(200);
         }
+
+        // TODO: This no longer does much...
+
     }, {
         key: 'onTask',
         value: function () {
-            var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(activityTask) {
-                for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-                    args[_key - 1] = arguments[_key];
+            var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+                for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                    args[_key] = arguments[_key];
                 }
 
-                var task, newArgs;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                task = new _ActivityTask2.default(activityTask);
-                                newArgs = [task].concat(args);
-                                _context.next = 4;
-                                return this.activity.onTask.apply(this.activity, newArgs);
+                                _context.next = 2;
+                                return this.activity.onTask.apply(this.activity, args);
 
-                            case 4:
+                            case 2:
                                 return _context.abrupt('return', _context.sent);
 
-                            case 5:
+                            case 3:
                             case 'end':
                                 return _context.stop();
                         }
@@ -133,7 +129,7 @@ var ActivityTester = (_dec = (0, _logger2.default)(), _dec(_class = (_temp = _cl
                 }, _callee, this);
             }));
 
-            function onTask(_x, _x2) {
+            function onTask(_x) {
                 return ref.apply(this, arguments);
             }
 
