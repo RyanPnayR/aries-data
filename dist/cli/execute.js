@@ -1,8 +1,14 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _logger = require('../util/logger');
+
+var _logger2 = _interopRequireDefault(_logger);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
 
@@ -10,12 +16,13 @@ exports.default = function () {
     var ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(_ref) {
         var repo = _ref.repo;
         var _ = _ref._;
-        var args, pkg, Module, handler;
+        var log, args, pkg, Module, handler, result;
         return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
-                        _context.prev = 0;
+                        log = (0, _logger2.default)(__filename);
+                        _context.prev = 1;
 
                         // Parse args.
                         args = _.map(function (arg) {
@@ -40,25 +47,30 @@ exports.default = function () {
 
                         // Run the onTask function.
 
-                        _context.next = 7;
+                        _context.next = 8;
                         return handler.onTask.apply(handler, args);
 
-                    case 7:
-                        _context.next = 12;
+                    case 8:
+                        result = _context.sent;
+
+
+                        console.log(result);
+
+                        _context.next = 15;
                         break;
 
-                    case 9:
-                        _context.prev = 9;
-                        _context.t0 = _context["catch"](0);
-
-                        console.log(_context.t0);
-
                     case 12:
-                    case "end":
+                        _context.prev = 12;
+                        _context.t0 = _context['catch'](1);
+
+                        log.error(_context.t0.message);
+
+                    case 15:
+                    case 'end':
                         return _context.stop();
                 }
             }
-        }, _callee, this, [[0, 9]]);
+        }, _callee, this, [[1, 12]]);
     }));
 
     function execute(_x) {

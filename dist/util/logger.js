@@ -32,20 +32,26 @@ var Logger = function () {
         this.log = _bunyan2.default.createLogger({
             name: require('../../package.json').name,
             serializers: { err: _bunyan2.default.stdSerializers.err },
-            streams: streams || [{
-                level: 'trace',
-                stream: (0, _bunyanFormat2.default)({ outputMode: 'short' })
-            }, {
-                level: 'trace',
-                path: process.env.LOG_FILE || './app.log'
-            }]
+            streams: streams || this.getDefaultStreams()
         });
     }
 
-    // Create a base logger.
-
-
     _createClass(Logger, [{
+        key: 'getDefaultStreams',
+        value: function getDefaultStreams() {
+            // Default log level.
+            var level = 'trace';
+
+            // Default stream - FILE in prod, STDOUT in dev.
+            var stream = process.env.NODE_ENV === 'production' ? { level: level, path: process.env.LOG_FILE || './app.log' } : { level: level, stream: (0, _bunyanFormat2.default)({ outputMode: 'short' }) };
+
+            // Return array with our default stream.
+            return [stream];
+        }
+
+        // Create a base logger.
+
+    }, {
         key: 'createLogger',
         value: function createLogger(options) {
             // If a string is passed, just use it for the name.
