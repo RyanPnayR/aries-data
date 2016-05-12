@@ -6,7 +6,8 @@
   "scripts": {
     "test": "babel-node test/test.js | faucet",
     "clean": "rm -rf dist",
-    "build": "npm run clean && babel lib -d dist"
+    "build": "npm run clean && babel lib -d dist",
+    "build-image": "docker build --no-cache -t astronomerio/aries-data ."
   },
   "bin": {
     "aries-data": "./dist/cli/aries-data.js"

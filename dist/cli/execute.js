@@ -62,14 +62,18 @@ exports.default = function () {
 
                     case 9:
                         output = _context.sent;
+
+
+                        // Get duration.
                         _process$hrtime = process.hrtime(start);
                         _process$hrtime2 = _slicedToArray(_process$hrtime, 1);
                         seconds = _process$hrtime2[0];
 
                         log.debug('onTask took ' + seconds + ' seconds');
-
                         log.debug('Task executed sucessfully with the following output:');
-                        log.info(output);
+
+                        // Log the pure output as last line to STDOUT.
+                        console.log(output);
                         _context.next = 21;
                         break;
 
