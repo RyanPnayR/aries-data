@@ -99,7 +99,7 @@ function singleS3StreamInput() {
 
                                     // Create new activityTask replacing the original input with the file.
 
-                                    newActivityTask = activityTask.assign({ input: input });
+                                    newActivityTask = { input: input };
 
                                     // Create args for original function.
 
