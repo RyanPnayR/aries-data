@@ -73,7 +73,7 @@ exports.default = function () {
                         log.debug('Task executed sucessfully with the following output:');
 
                         // Log the pure output as last line to STDOUT.
-                        console.log(output);
+                        console.log({ input: output });
                         _context.next = 21;
                         break;
 
