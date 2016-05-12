@@ -59,9 +59,9 @@ exports.default = function () {
                         _context.prev = 6;
 
                         // Log out arguments.
-                        log.debug('Calling task handler with the following args (' + args.length + ').');
+                        log.debug('Calling task handler with the following args (' + args.length + '):');
                         args.forEach(function (arg) {
-                            return log.debug.bind(log);
+                            return log.debug(arg);
                         });
 
                         // Attempt to execute the task.
@@ -81,8 +81,8 @@ exports.default = function () {
                         log.debug('Task executed sucessfully with the following output:');
 
                         // Log the pure output as last line to STDOUT.
-                        console.log({ input: output });
-                        _context.next = 23;
+                        console.log(JSON.stringify({ input: output }));
+                        _context.next = 24;
                         break;
 
                     case 20:
@@ -91,22 +91,25 @@ exports.default = function () {
 
                         log.error('Error executing task:', _context.t0.message);
 
-                    case 23:
-                        _context.next = 28;
+                        // Log out an empty object.
+                        console.log('{}');
+
+                    case 24:
+                        _context.next = 29;
                         break;
 
-                    case 25:
-                        _context.prev = 25;
+                    case 26:
+                        _context.prev = 26;
                         _context.t1 = _context['catch'](0);
 
                         log.error(_context.t1.message);
 
-                    case 28:
+                    case 29:
                     case 'end':
                         return _context.stop();
                 }
             }
-        }, _callee, this, [[0, 25], [6, 20]]);
+        }, _callee, this, [[0, 26], [6, 20]]);
     }));
 
     function execute(_x) {
