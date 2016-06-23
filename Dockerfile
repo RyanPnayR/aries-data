@@ -3,7 +3,14 @@ FROM node:6.1.0
 MAINTAINER astronomer <greg@astronomer.io>
 
 # Install task-runner globally.
-RUN ["npm", "install", "-g", "aries-data/aries-data#airflow"]
+# RUN ["npm", "install", "-g", "aries-data/aries-data#airflow"]
+ADD lib /aries-data/lib
+ADD index.js /aries-data
+ADD package.json /aries-data
+ADD .babelrc /aries-data
+WORKDIR /aries-data
+RUN ["npm", "install", "-g", "."]
+# RUN ["npm", "link"]
 
 # Execute task-runner with arguments provided from CMD.
 ENTRYPOINT ["aries-data"]
