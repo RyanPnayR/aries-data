@@ -119,10 +119,7 @@ function singleS3StreamOutput() {
                                         Key: _uuid2.default.v4() + '.zip',
                                         Body: readStream.pipe(new _stream.PassThrough())
                                     };
-                                    s3Options = {
-                                        partSize: 5 * 1024 * 1024,
-                                        queueSize: 5
-                                    };
+                                    s3Options = {};
 
                                     // Upload and wait for stream to finish.
 
