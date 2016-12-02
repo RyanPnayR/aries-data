@@ -116,7 +116,7 @@ function singleS3StreamOutput() {
                                         Bucket: process.env.AWS_S3_TEMP_BUCKET,
                                         ContentType: 'application/zip',
                                         ContentEncoding: 'chunked',
-                                        Key: _uuid2.default.v4(),
+                                        Key: _uuid2.default.v4() + '.zip',
                                         Body: readStream.pipe(new _stream.PassThrough())
                                     };
                                     s3Options = {
