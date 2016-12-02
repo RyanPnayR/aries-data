@@ -145,13 +145,13 @@ function singleS3StreamOutput() {
                                 case 12:
                                     result = _context.sent;
 
-
+                                    _this.log.debug('Proof');
                                     _this.log.debug('Successfully streamed ' + s3Params.Key + ' to s3.');
 
                                     // Return the filename.
                                     return _context.abrupt('return', { key: s3Params.Key });
 
-                                case 15:
+                                case 16:
                                 case 'end':
                                     return _context.stop();
                             }
